@@ -24,10 +24,10 @@ function setup() {
     }
 
   
-  for(y=0;y<(height - (2 * frame * dist))*dist;y+=dist) {
-    for(x=0;x<(height - (2 * frame * dist))*dist;x+=dist) {
+  for(y=0;y<(height - (2 * frame * dist));y+=dist) {
+    for(x=0;x<(height - (2 * frame * dist));x+=dist) {
       
-      if(r(1) < 1 - expr(x, y, 8)) {
+      if(r(1) < 1 - expr(x, y, 16)) {
         
       stroke(50 + (r(5)))
       //let pix = img.get(x + r(15), y + r(15));
@@ -54,7 +54,10 @@ function o(x){
 }
 
 function expr(x, y, s) {
-  return cos(tan(sin((x/s) & 153) + sin((y/s) & 153)))
+
+  return cos(tan(sin((x/s) & 23) + sin((y/s) & 23)))
+  //x & y & (x/y + y/x) 
+  //(x % 256)*(y % 256) / 2000
   //tan(sin((x)/4**2) / sin((y)/4**3))
   //sin((x)/4**2) / sin((y/2)**2)
   //cos(tan(sin((x/s) & 23) + sin((y/s) & 23)))
